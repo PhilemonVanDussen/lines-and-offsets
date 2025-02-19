@@ -26,11 +26,24 @@ def main():
     while running:
         running = handle_events()
         screen.fill(config.GREEN) # Use color from config
-        pygame.display.flip()
 
-        # Limit the frame rate to the specified frames per second
+        thickness = 5
+        for y_offset in range(0, 800, 20):
+            pygame.draw.line(screen, config.WHITE, [0, 0 + y_offset], [800,0  + y_offset], thickness)
+
+        y_offset = 0
+        thickness = 5
+        while y_offset < 800:
+            pygame.draw.line(screen, config.BLUE, [0,5  + y_offset], [800, 5 + y_offset], thickness)
+            y_offset = y_offset + 10
+
+        
+        for x_offset in range(0, 800, 20):
+            thickness = 5
+            pygame.draw.line(screen, config.RED, [0 + x_offset, 0 ], [0 + x_offset, 650], thickness)
+
+        pygame.display.flip() # Limit the frame rate to the specified frames per second
         clock.tick(config.FPS) # Use the clock to control the frame rate
-
     pygame.quit()
     sys.exit()
 
